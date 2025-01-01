@@ -5,7 +5,7 @@ const Step2Form = ({ formData, handleChange, PackagingTypes, WeightUnit, UnitOfM
   const [showFields, setShowFields] = useState(false);
 
   return (
-    <div className="h-[65vh]">
+    <div className="h-screen">
       <div className="relative border dark:border-gray-500 mt-10 pt-14 p-5">
         <span className="absolute -top-4 left-5 bg-white dark:bg-[#2A2E3A] px-1 text-lg text-black dark:text-gray-500">
           Product

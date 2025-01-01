@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import {Steppers} from "../../component/add-product";
+import { Steppers } from "../../component/add-product";
 import Step1Form from "./step1-form";
 import Step2Form from "./step2-form";
+import Step3Form from "./step3-form";
 
 const categoryData = [{ id: 1, label: "Mango", value: "Mango" }];
 const commodityType = [{ id: 1, label: "HuzifaCake", Value: "HuzifaCake" }];
-const productVisibility = [{ id: 1, label: "Iftikhar khan", Value: "Iftikhar khan" },];
+const productVisibility = [
+  { id: 1, label: "Iftikhar khan", Value: "Iftikhar khan" },
+];
 const productType = [{ id: 1, label: "Pushpa Raj", Value: "Pushpa Raj" }];
 const PackagingTypes = [{ id: 1, label: "Rocky bhai", Value: "Rocki bhai" }];
 const WeightUnit = [{ id: 1, label: "1", Value: "1" }];
@@ -28,7 +31,7 @@ export function ProductInfo({ isDarkMode }) {
     cropYear: "",
     harvestMonths: "",
     processedMonths: "",
-    PackagingTypes: "", 
+    PackagingTypes: "",
     WeightUnit: "",
     WeightPerPackagingTypeInKg: "",
     QuantityInKgOfEachPallet: "",
@@ -53,6 +56,11 @@ export function ProductInfo({ isDarkMode }) {
     if (currentStep > 1) setCurrentStep(currentStep - 1);
   };
 
+  const handleSubmit = () => {
+    console.log("Form Submitted", formData);
+    // Handle form submission logic here (e.g., send data to backend)
+  };
+
   return (
     <div className={` ${isDarkMode ? "bg-[#2D313E]" : "bg-[#f5f6f8]"}`}>
       <div className={`p-5`}>
@@ -74,41 +82,29 @@ export function ProductInfo({ isDarkMode }) {
           {/* Step 1 Form */}
           {currentStep === 1 && (
             <Step1Form
-            formData={formData}
-            handleChange={handleChange}
-            categoryData={categoryData}
-            commodityType={commodityType}
-            productVisibility={productVisibility}
-            productType={productType}
-          />
+              formData={formData}
+              handleChange={handleChange}
+              categoryData={categoryData}
+              commodityType={commodityType}
+              productVisibility={productVisibility}
+              productType={productType}
+            />
           )}
 
           {/* Step 2 Form */}
           {currentStep === 2 && (
-             <Step2Form
-             formData={formData}
-             handleChange={handleChange}
-             PackagingTypes={PackagingTypes}
-             WeightUnit={WeightUnit}
-             UnitOfMeasure={UnitOfMeasure}
-           />
-          
+            <Step2Form
+              formData={formData}
+              handleChange={handleChange}
+              PackagingTypes={PackagingTypes}
+              WeightUnit={WeightUnit}
+              UnitOfMeasure={UnitOfMeasure}
+            />
           )}
 
           {/* Step 3 Form */}
           {currentStep === 3 && (
-            <div>
-              <label className="block text-sm font-semibold text-gray-700">
-                Product Description
-              </label>
-              <textarea
-                name="productDescription"
-                value={formData.productDescription}
-                onChange={handleChange}
-                className="mt-2 p-2 border border-gray-300 rounded w-full"
-                placeholder="Enter product description"
-              />
-            </div>
+            <Step3Form formData={formData} handleChange={handleChange} />
           )}
           {/* Navigation Buttons - Aligned to the Right */}
           <div className="flex justify-end mt-6 space-x-4">
@@ -120,10 +116,12 @@ export function ProductInfo({ isDarkMode }) {
               Previous
             </button>
             <button
-              onClick={handleNextStep}
-              className="px-4 py-2 bg-[#34C38F] dark:bg-[#5A74E8] text-white rounded-md"
+              onClick={currentStep === 3 ? handleSubmit : handleNextStep}
+              className={`px-4 py-2 ${
+                currentStep === 3 ? "bg-[#34C38F]" : "bg-[#34C38F]"
+              } dark:bg-[#5A74E8] text-white rounded-md`}
             >
-              Next
+              {currentStep === 3 ? "Submit" : "Next"}
             </button>
           </div>
         </div>
