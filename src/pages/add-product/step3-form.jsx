@@ -153,7 +153,7 @@ const Step3Form = () => {
         </div>
         <div className="flex-1">
           <InputField
-            label={"Discount Price Per LB (PKR) (Optional)"}
+            label={"Discount Price Per LB (PKR) (Opt)"}
             width={"w-full"}
             placeholder={"Add Discount Price"}
             hasAsterisk={false}
