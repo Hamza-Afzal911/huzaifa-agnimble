@@ -49,7 +49,7 @@ export function Dashboard() {
 
   return (
     <div
-      className={`relative flex ${
+      className={`relative flex  ${
         isDarkMode ? "bg-[#2d313e] text-gray-100" : "bg-white text-gray-900"
       }`}
     >
@@ -151,7 +151,7 @@ export function Dashboard() {
       >
         {/* Top Navbar */}
         <nav
-          className={`top-0 left-0  w-full flex items-center justify-between p-4 ${
+          className={` table-fixed w-full flex items-center justify-between p-4 ${
             isDarkMode ? "bg-[#2a2e3a]" : "bg-[#FFFFFF]"
           } transition-all duration-300`}
         >

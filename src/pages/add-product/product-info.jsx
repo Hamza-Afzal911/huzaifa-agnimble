@@ -54,7 +54,7 @@ export function ProductInfo({ isDarkMode }) {
   };
 
   return (
-    <div className={`${isDarkMode ? "bg-[#2D313E]" : "bg-[#f5f6f8]"}`}>
+    <div className={` ${isDarkMode ? "bg-[#2D313E]" : "bg-[#f5f6f8]"}`}>
       <div className={`p-5`}>
         <h2 className="text-xl font-semibold pt-5">Add Product</h2>
         <div
@@ -128,7 +128,7 @@ export function ProductInfo({ isDarkMode }) {
           </div>
         </div>
       </div>
-      <div className="flex justify-between bg-[#FFFFFF] dark:bg-[#2A2E3A] border border-t-slate-200 dark:border-[#353747] mt-52 p-4 w-full">
+      <div className="flex justify-between bg-[#FFFFFF] dark:bg-[#2A2E3A] border border-t-slate-200 dark:border-[#353747] p-4 w-full">
         <p>© 2020 -2024, AGnimble.</p>
         <p>Your Procurement Hub</p>
       </div>
