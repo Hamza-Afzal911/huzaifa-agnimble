@@ -4,7 +4,8 @@ import { FaMoon, FaClipboard, FaBell, FaChevronDown } from "react-icons/fa";
 import logo from "../../photos/logo-light.png";
 import smlogo from "../../photos/logo-sm.png";
 import { ProductInfo } from "../add-product";
-
+import { ManageWarehouse } from "../manage-inventory";
+import { Card } from "../../component/dashboard";
 
 export function Dashboard() {
   const [isOpen, setIsOpen] = useState(true); // Start as open for full side panel
@@ -22,7 +23,6 @@ export function Dashboard() {
     console.log("Logo button clicked!");
     // Add your desired action here
   };
-  
 
   const handleBellClick = () => {
     setNotificationOpen(!isNotificationOpen); // Toggle notification dropdown visibility
@@ -122,6 +122,7 @@ export function Dashboard() {
               className={`group flex items-center p-3 rounded hover:bg-[#34c38f15] transition duration-300 ease-in-out ${
                 isOpen ? "" : "justify-center"
               }`}
+              onClick={() => changePage("manageWarehouse")} // Add this line to handle "Manage Warehouse"
             >
               <FaServicestack
                 className={`text-black group-hover:text-[#34c38f] transition duration-300 ease-in-out ${
@@ -130,12 +131,12 @@ export function Dashboard() {
               />
               {isOpen && (
                 <a
-                  href="#services"
+                  href="#Manage Warehouse"
                   className={`${
                     isDarkMode ? "text-gray-400" : "text-black"
                   } ml-4 block text-black group-hover:text-[#34c38f] transition duration-300 ease-in-out`}
                 >
-                  Manage Inventory
+                  Manage Warehouse
                 </a>
               )}
             </li>
@@ -207,7 +208,6 @@ export function Dashboard() {
             </div>
           </div>
         </nav>
-
         {/* Page Content */}
         {currentPage === "dashboard" && (
           <div
@@ -216,70 +216,33 @@ export function Dashboard() {
             }`}
           >
             <h1 className="text-xl font-semibold pt-16">Dasboard</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">
-              {/* Box 1 */}
-              <div
-                className={`flex flex-col items-start p-10  rounded-lg shadow-md ${
-                  isDarkMode ? "bg-[#2d313e]" : "bg-white"
-                }`}
-              >
-                <p className="text-left">₨0.00</p>
-                <p className="text-left text-xs text-gray-600 pt-1 pb-5">
-                  Total Revenue
-                </p>
-                <p className="text-left">
-                  <span className="text-red-600">0.00%</span> since last week
-                </p>
-              </div>
-
-              {/* Box 2 */}
-              <div
-                className={`flex flex-col items-start p-10  rounded-lg shadow-md ${
-                  isDarkMode ? "bg-[#2d313e]" : "bg-white"
-                }`}
-              >
-                <p className="text-left">0</p>
-                <p className="text-left text-xs text-gray-600 pt-1 pb-5">
-                  Orders
-                </p>
-                <p className="text-left">
-                  <span className="text-red-600">0.00%</span> since last week
-                </p>
-              </div>
-
-              {/* Box 3 */}
-              <div
-                className={`flex flex-col items-start p-10  rounded-lg shadow-md ${
-                  isDarkMode ? "bg-[#2d313e]" : "bg-white"
-                }`}
-              >
-                <p className="text-left">0</p>
-                <p className="text-left text-xs text-gray-600 pt-1 pb-5">
-                  Customers
-                </p>
-                <p className="text-left">
-                  <span className="text-red-600">0.00%</span> since last week
-                </p>
-              </div>
-
-              {/* Box 4 */}
-              <div
-                className={`flex flex-col items-start p-10  rounded-lg shadow-md ${
-                  isDarkMode ? "bg-[#2d313e]" : "bg-white"
-                }`}
-              >
-                <p className="text-left">0</p>
-                <p className="text-left text-xs text-gray-600 pt-1 pb-5">
-                  Growth
-                </p>
-                <p className="text-left">
-                  <span className="text-red-600">0.00%</span> since last week
-                </p>
-              </div>
+            <div>
+              <Card
+                Padding={"p-10"}
+                isDarkMode={isDarkMode}
+                Heading1="₨0.00"
+                title1="Total Revenue"
+                description1={`<span class="text-red-600">0.00%</span> since last week`}
+                Heading2="0"
+                title2="Orders"
+                description2={`<span class="text-red-600">0.00%</span> since last week`}
+                Heading3="0"
+                title3="Customers"
+                description3={`<span class="text-red-600">0.00%</span> since last week`}
+                Heading4="0%"
+                title4="Growth"
+                description4={`<span class="text-red-600">0.00%</span> since last week`}
+              />
             </div>
           </div>
         )}
-        {currentPage === "addProduct" && <ProductInfo isDarkMode={isDarkMode} />}
+        {currentPage === "addProduct" && (
+          <ProductInfo isDarkMode={isDarkMode} />
+        )}
+        {currentPage === "manageWarehouse" && (
+          <ManageWarehouse isDarkMode={isDarkMode} />
+        )}{" "}
+        {/* Render Manage Warehouse */}
       </div>
     </div>
   );
