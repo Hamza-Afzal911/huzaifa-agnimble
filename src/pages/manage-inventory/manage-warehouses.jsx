@@ -69,7 +69,7 @@ export function ManageWarehouse({ isDarkMode }) {
         showImage={true}
       />
 
-      <div className="mt-8 bg-white p-8 shadow rounded">
+      <div className={`mt-8  p-8 shadow rounded ${isDarkMode ? "bg-[#2d313e] shadow-xl" : "bg-white"}`}>
         <div className="flex justify-end pb-12">
           <button
             onClick={handleButtonClick}
@@ -81,32 +81,32 @@ export function ManageWarehouse({ isDarkMode }) {
 
         <div className="flex justify-between items-center mb-10">
           <div className="flex items-center space-x-2">
-            <label htmlFor="entries" className="text-gray-700">Show</label>
+            <label htmlFor="entries" className={`${isDarkMode ? "text-white" : ""}`}>Show</label>
             <select
               id="entries"
               value={entries}
               onChange={handleEntriesChange}
-              className="border border-gray-300 rounded px-2 py-1"
+              className={`border border-gray-300 rounded px-2 py-1 ${isDarkMode ? "bg-[#2d313e]" : "bg-[#F8F9FA]"}`}
             >
               <option value={10}>10</option>
               <option value={25}>25</option>
               <option value={50}>50</option>
               <option value={100}>100</option>
             </select>
-            <span className="text-gray-700">entries</span>
+            <span className={`${isDarkMode ? "text-white" : ""}`}>entries</span>
           </div>
 
           <div className="flex items-center space-x-2">
-            <span className="text-gray-700">Search:</span>
+            <span className={`${isDarkMode ? "text-white" : ""}`}>Search:</span>
             <input
               type="text"
               placeholder="Search warehouse"
-              className="border border-gray-300 rounded px-2 py-1"
+              className={`border border-gray-300 rounded px-2 py-1 ${isDarkMode ? "bg-[#2d313e]" : "bg-[#F8F9FA]"}`}
             />
           </div>
         </div>
 
-        <table className="w-full text-[#495058] text-center border-t border-gray-300">
+        <table className={` w-full text-[#495058] text-center border-t border-gray-300 ${isDarkMode ? "text-white" : ""}`}>
           <thead>
             <tr>
               <th className="border-t border-gray-300 p-2">#</th>
@@ -117,7 +117,7 @@ export function ManageWarehouse({ isDarkMode }) {
               <th className="border-t border-gray-300 p-2">Edit</th>
             </tr>
           </thead>
-          <tbody className="bg-[#F8F9FA]">
+          <tbody className={` ${isDarkMode ? "bg-[#2d313e] text-white" : "bg-[#F8F9FA]"}`}>
             {warehouses.slice(0, entries).map((warehouse) => (
               <tr key={warehouse.id}>
                 <td className=" p-2">{warehouse.id}</td>
@@ -132,7 +132,7 @@ export function ManageWarehouse({ isDarkMode }) {
                     View Inventory
                   </button>
                 </td>
-                <td className="bg-gray-100 p-2">
+                <td className={` pt-2  ${isDarkMode ? "bg-[#2d313e]" : "bg-[#F8F9FA]"}`}>
                   <button
                     onClick={() => handleEditClick(warehouse.id)}
                     className="text-orange-500"
